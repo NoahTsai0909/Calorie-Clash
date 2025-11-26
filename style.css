@@ -83,6 +83,11 @@ h1 {
     font-size: 2.5vw;      /* scales with viewport width */
 }
 
+#streakText {
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+}
 
 #score {
     font-size: 40px;
@@ -95,6 +100,47 @@ h1 {
 
 .overlay.wrong {
     background: rgba(200, 0, 0, 0.6); /* red for wrong */
+}
+
+/* Fade-out */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Fade-in */
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes wrongPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+.wrong-pulse {
+    animation: wrongPulse 0.4s ease-out;
+}
+
+@keyframes correctPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 200, 0, 0); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 200, 0, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 200, 0, 0); }
+}
+
+.correct-pulse {
+    animation: correctPulse 0.4s ease-out;
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.scale-in {
+    animation: scaleIn 0.35s ease-out;
 }
 
 
