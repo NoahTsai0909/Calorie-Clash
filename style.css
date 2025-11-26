@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #fafafa;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+#instructions {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    gap: 5%;                /* gap scales proportionally */
+    margin-top: 3vw;
+}
+
+.food-card {
+    width: 45%;              /* take roughly half the container */
+    max-width: 700px;        /* don’t go larger than 700px */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-wrap {
+    position: relative;
+    width: 100%;             /* fill the food-card */
+    padding-top: 100%;       /* makes a square container (height = width) */
+    border-radius: 5%;       /* rounded corners in % so it scales */
+    overflow: hidden;
+    background: #fff;
+    border: 2px solid #ddd;
+    position: relative;
+}
+
+.food-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+
+.food-card:hover .food-image {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(120, 120, 120, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;       /* scales with viewport width */
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+    visibility: hidden;
+    border-radius: 5%;    /* same as image-wrap */
+}
+
+.caption {
+    margin-top: 1vw;
+    font-size: 2.5vw;      /* scales with viewport width */
+}
+
+
+#score {
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+.overlay.correct {
+    background: rgba(0, 200, 0, 0.6); /* green for correct */
+}
+
+.overlay.wrong {
+    background: rgba(200, 0, 0, 0.6); /* red for wrong */
+}
+
+
+@media (max-width: 800px) {
+    .food-card {
+        width: 80%;          /* almost full width on mobile */
+    }
+
+    .overlay {
+        font-size: 8vw;      /* make overlay text bigger for smaller screens */
+    }
+
+    .caption {
+        font-size: 5vw;
+    }
+    
+    .game-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

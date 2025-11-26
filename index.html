@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calorie Clash</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <h1>Calorie Clash</h1>
+
+    <div id="instructions">
+        Choose the food you believe has <strong>more calories per 100g/ml</strong>.
+    </div>
+
+    <div class="game-container">
+        <div class="food-card" id="choiceA">
+  <div class="image-wrap">
+    <img id="foodA" class="food-image" src="" alt="Food A" />
+    <div id="overlayA" class="overlay"></div>
+  </div>
+  <div id="captionA" class="caption"></div>
+</div>
+
+<div class="food-card" id="choiceB">
+  <div class="image-wrap">
+    <img id="foodB" class="food-image" src="" alt="Food B" />
+    <div id="overlayB" class="overlay"></div>
+  </div>
+  <div id="captionB" class="caption"></div>
+</div>
+    </div>
+
+    <div id="score">Streak: 0</div>
+    <div id="streakMessage" style="margin-top:20px; display:none;">
+    <div id="streakText" style="font-size:20px; font-weight:bold;"></div>
+    <button id="playAgainBtn" style="margin-top:10px; padding:8px 16px; font-size:16px;">Play Again</button>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

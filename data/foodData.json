@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Kinder Bueno",
+    "image": "images/kinder-bueno.jpg",
+    "calories": 539
+  },
+  {
+    "name": "Nutella",
+    "image": "images/nutella-ferrero.jpg",
+    "calories": 530
+  },
+  {
+    "name": "Pringles (Original)",
+    "image": "images/original-pringles.jpg",
+    "calories": 572
+  },
+  {
+    "name": "Biscoff Lotus",
+    "image": "images/biscoff-lotus.jpg",
+    "calories": 484
+  },
+  {
+    "name": "Corn Flakes - Kellogg's",
+    "image": "images/corn-flakes-kellogg-s.jpg",
+    "calories": 378
+  }
+]
