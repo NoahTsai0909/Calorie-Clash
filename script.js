@@ -2,6 +2,8 @@ let foodData = [];
 let itemA, itemB;
 let streak = 0;
 let gameActive = true; // <-- new flag
+let lastWinner = null; 
+let winnerStreak = 0;
 
 async function loadData() {
   const res = await fetch("data/foodData.json");
@@ -10,21 +12,55 @@ async function loadData() {
 }
 
 function loadNewFoodPair() {
-  const idxA = Math.floor(Math.random() * foodData.length);
-  let idxB = Math.floor(Math.random() * foodData.length);
+  let nextA, nextB;
 
-  while (idxB === idxA) {
-    idxB = Math.floor(Math.random() * foodData.length);
+  // ---- CASE 1: FIRST ROUND OR NO PRIOR WINNER ----
+  if (!lastWinner) {
+    // pick two random different foods
+    const idxA = Math.floor(Math.random() * foodData.length);
+    let idxB = Math.floor(Math.random() * foodData.length);
+    while (idxB === idxA) idxB = Math.floor(Math.random() * foodData.length);
+
+    nextA = foodData[idxA];
+    nextB = foodData[idxB];
   }
 
-  itemA = foodData[idxA];
-  itemB = foodData[idxB];
+  // ---- CASE 2: WINNER STREAK < 2 → NORMAL MODE ----
+  else if (winnerStreak < 2) {
+    // Winner stays as side A
+    nextA = lastWinner;
 
-  // Load images
+    // pick challenger
+    do {
+      nextB = foodData[Math.floor(Math.random() * foodData.length)];
+    } while (nextB === nextA);
+  }
+
+  // ---- CASE 3: WINNER STREAK >= 2 → FORCED ROTATION ----
+  else {
+    // We want: last two challengers fighting OR two new foods
+    // So we simply pick two new distinct foods NOT including lastWinner
+
+    do {
+      nextA = foodData[Math.floor(Math.random() * foodData.length)];
+    } while (nextA === lastWinner);
+
+    do {
+      nextB = foodData[Math.floor(Math.random() * foodData.length)];
+    } while (nextB === lastWinner || nextB === nextA);
+
+    // Reset winner streak so the new foods get a fair chance
+    lastWinner = null;
+    winnerStreak = 0;
+  }
+
+  // Finalize new items
+  itemA = nextA;
+  itemB = nextB;
+
+  // Load images + captions
   document.getElementById("foodA").src = itemA.image;
   document.getElementById("foodB").src = itemB.image;
-
-  // Load captions
   document.getElementById("captionA").textContent = itemA.name;
   document.getElementById("captionB").textContent = itemB.name;
 }
@@ -77,6 +113,15 @@ function handleChoice(choice) {
 
   const correctChoice = A >= B ? "A" : "B";
   const correct = choice === correctChoice;
+
+  let winner = (correctChoice === "A") ? itemA : itemB;
+
+  if (winner === lastWinner) {
+    winnerStreak++;
+  } else {
+    lastWinner = winner;
+    winnerStreak = 1;
+  }
 
   const overlayA = document.getElementById("overlayA");
   const overlayB = document.getElementById("overlayB");
