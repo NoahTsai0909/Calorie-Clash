@@ -69,6 +69,8 @@ function loadNewFoodPair() {
 function newRound() {
   gameActive = true;
 
+  document.getElementById("whooshSound").play();
+
   // Clear overlays
   document.getElementById("overlayA").style.visibility = "hidden";
   document.getElementById("overlayB").style.visibility = "hidden";
@@ -150,6 +152,8 @@ function handleChoice(choice) {
       document.getElementById("foodB").classList.add("correct-pulse");
     }
 
+    document.getElementById("correctSound").play();
+
     // Remove after animation finishes
     setTimeout(() => {
       document.getElementById("foodA").classList.remove("correct-pulse", "wrong-pulse");
@@ -170,6 +174,8 @@ function handleChoice(choice) {
     } else {
       document.getElementById("foodB").classList.add("wrong-pulse");
     }
+
+    document.getElementById("wrongSound").play();
 
     // Remove the pulse class after the animation ends
     setTimeout(() => {
