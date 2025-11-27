@@ -23,5 +23,25 @@
     "name": "Corn Flakes - Kellogg's",
     "image": "images/corn-flakes-kellogg-s.jpg",
     "calories": 378
+  },
+  {
+    "name": "Coca Cola Original Taste",
+    "image": "images/coca-cola-original-taste.jpg",
+    "calories": 42
+  },
+  {
+    "name": "Chocolate Biscotti",
+    "image": "images/chocolate-biscotti-pavesi.jpg",
+    "calories": 488
+  },
+  {
+    "name": "Big Mac",
+    "image": "images/big-mac.jpg",
+    "calories": 258
+  },
+  {
+    "name": "Filet O Fish",
+    "image": "images/filet-o-fish.jpg",
+    "calories": 281
   }
 ]
